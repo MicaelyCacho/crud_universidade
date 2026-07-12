@@ -1,3 +1,34 @@
+# ===================================
+# SELETOR DE MOTOR DE BANCO DE DADOS
+# ===================================
+import sys
+print("="*50)
+print("   SELECIONE O MOTOR DE BANCO DE DADOS PARA O TESTE")
+print("="*50)
+print(" [1] PostgreSQL (Parte 1 - Relacional AWS RDS)")
+print(" [2] MongoDB    (Parte 2 - NoSQL AWS / Atlas)")
+print("="*50)
+motor_escolhido = input("Escolha o motor (1 ou 2): ")
+
+if motor_escolhido == "2":
+    print("\n[INFO] Redirecionando operações para o MongoDB...")
+    from init_db import inicializar_banco_nosql
+    inicializar_banco_nosql() #Garante a criação dos Schemas e Índices
+    
+    # Importa as funções NoSQL com os mesmos nomes das relacionais,
+    # fazendo com que o menu abaixo chame o MongoDB sem alterar o código
+    from crud_nosql import (
+        inserir_usuario, listar_usuarios, atualizar_senha_usuario, deletar_usuario,
+        inserir_curso, listar_cursos, atualizar_nome_curso, deletar_curso,
+        inserir_estudante, listar_estudantes, atualizar_matricula_estudante, deletar_estudante,
+        inserir_vinculo, atualizar_status_vinculo, deletar_vinculo, listar_estudantes_completos
+    )
+elif motor_escolhido != "1":
+    print("[Erro] Opção inválida. Encerrando o sistema.")
+    sys.exit()
+else:
+    print("\n[INFO] Executando motor padrão PostgreSQL...")
+
 from crud_universidade import (
     inserir_usuario, listar_usuarios, atualizar_senha_usuario, deletar_usuario,
     inserir_curso, listar_cursos, atualizar_nome_curso, deletar_curso,
