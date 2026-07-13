@@ -1,6 +1,3 @@
-# ===================================
-# SELETOR DE MOTOR DE BANCO DE DADOS
-# ===================================
 import sys
 print("="*50)
 print("   SELECIONE O MOTOR DE BANCO DE DADOS PARA O TESTE")
@@ -13,10 +10,8 @@ motor_escolhido = input("Escolha o motor (1 ou 2): ")
 if motor_escolhido == "2":
     print("\n[INFO] Redirecionando operações para o MongoDB...")
     from init_db import inicializar_banco_nosql
-    inicializar_banco_nosql() #Garante a criação dos Schemas e Índices
+    inicializar_banco_nosql()
     
-    # Importa as funções NoSQL com os mesmos nomes das relacionais,
-    # fazendo com que o menu abaixo chame o MongoDB sem alterar o código
     from crud_nosql import (
         inserir_usuario, listar_usuarios, atualizar_senha_usuario, deletar_usuario,
         inserir_curso, listar_cursos, atualizar_nome_curso, deletar_curso,
