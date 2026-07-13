@@ -107,6 +107,9 @@ GRANT USAGE ON SCHEMA universidade TO usuario_hop;
 GRANT SELECT ON ALL TABLES IN SCHEMA universidade TO usuario_hop;
 ```
 
+# Populando o Banco
+
+![]()
 
 
 
