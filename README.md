@@ -109,7 +109,9 @@ GRANT SELECT ON ALL TABLES IN SCHEMA universidade TO usuario_hop;
 
 # Populando o Banco
 
-![]()
+Data Warehouse antes da populaçao:
+
+![Data Warehouse Antes da População](https://raw.githubusercontent.com/MicaelyCacho/crud_universidade/main/img/dataWarehouse_antes_da_popula%C3%A7ao.png)
 
 
 
