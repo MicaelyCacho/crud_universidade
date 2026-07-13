@@ -113,5 +113,17 @@ Data Warehouse antes da populaçao:
 
 ![Data Warehouse Antes da População](https://raw.githubusercontent.com/MicaelyCacho/crud_universidade/main/img/dataWarehouse_antes_da_popula%C3%A7ao.png)
 
-
+```bash
+SELECT 'dim_professor' AS tabela, COUNT(*) FROM dw_universidade.dim_professor
+UNION ALL
+SELECT 'dim_disciplina', COUNT(*) FROM dw_universidade.dim_disciplina
+UNION ALL
+SELECT 'dim_departamento', COUNT(*) FROM dw_universidade.dim_departamento
+UNION ALL
+SELECT 'dim_semestre', COUNT(*) FROM dw_universidade.dim_semestre
+UNION ALL
+SELECT 'dim_campus', COUNT(*) FROM dw_universidade.dim_campus
+UNION ALL
+SELECT 'fato_turma', COUNT(*) FROM dw_universidade.fato_turma;
+```
 
