@@ -2,7 +2,7 @@
 import psycopg2
 from psycopg2 import Error
 
-# === CONFIGURAÇÃO DA CONEXÃO ===
+# CONFIGURAÇÃO DA CONEXÃO
 DB_HOST = "database-1.c0d8hrkmngei.us-east-1.rds.amazonaws.com"
 DB_NAME = "postgres"
 DB_USER = "postgres"
@@ -23,11 +23,11 @@ def obter_conexao():
         print(f"Erro ao conectar ao banco na AWS: {e}")
         return None
 
-# ==========================================
-#             CRUD: TABELA USUARIO
-# ==========================================
 
-# === CREATE ===
+# CRUD: TABELA USUARIO
+
+
+# CREATE
 def inserir_usuario(cpf, nome, login, senha, emails, data_nascimento=None):
     sql = """
     INSERT INTO universidade.usuario (cpf, nome, login, senha, email, data_nascimento)
@@ -47,7 +47,7 @@ def inserir_usuario(cpf, nome, login, senha, emails, data_nascimento=None):
             cursor.close()
             conn.close()
 
-# === READ ===
+# READ 
 def listar_usuarios():
     sql = "SELECT cpf, nome, login, email FROM universidade.usuario;"
     conn = obter_conexao()
@@ -66,7 +66,7 @@ def listar_usuarios():
             cursor.close()
             conn.close()
 
-# === UPDATE ===
+# UPDATE
 def atualizar_senha_usuario(cpf, nova_senha):
     sql = "UPDATE universidade.usuario SET senha = %s WHERE cpf = %s;"
     conn = obter_conexao()
@@ -86,7 +86,7 @@ def atualizar_senha_usuario(cpf, nova_senha):
             cursor.close()
             conn.close()
 
-# === DELETE ===
+# DELETE
 def deletar_usuario(cpf):
     sql = "DELETE FROM universidade.usuario WHERE cpf = %s;"
     conn = obter_conexao()
@@ -104,9 +104,9 @@ def deletar_usuario(cpf):
             conn.close()
 
 
-# ==========================================
-#             CRUD: TABELA CURSO
-# ==========================================
+
+# CRUD: TABELA CURSO
+
 
 def inserir_curso(nome, grau, turno, campus, nivel):
     sql = """
@@ -180,9 +180,9 @@ def deletar_curso(id_curso):
             cursor.close()
             conn.close()
 
-# ==========================================
-#             CRUD: TABELA ESTUDANTE
-# ==========================================
+
+# CRUD: TABELA ESTUDANTE
+
 
 def inserir_estudante(mat_estudante, cpf):
     sql = "INSERT INTO universidade.estudante (mat_estudante, cpf) VALUES (%s, %s);"
@@ -257,9 +257,8 @@ def deletar_estudante(mat_estudante):
             cursor.close()
             conn.close()            
 
-# ==========================================
-#             CRUD: TABELA VÍNCULO
-# ==========================================
+
+# CRUD: TABELA VÍNCULO
 
 def inserir_vinculo(mat_estudante, id_curso, status):
     sql = "INSERT INTO universidade.vinculo (mat_estudante, curso, status) VALUES (%s, %s, %s);"
@@ -277,7 +276,7 @@ def inserir_vinculo(mat_estudante, id_curso, status):
             cursor.close()
             conn.close()
 
-# === READ (Relatório de Alunos) ===
+# READ (Relatório de Alunos)
 def listar_estudantes_completos():
     sql = """
     SELECT u.nome, e.mat_estudante, c.nome, v.status
