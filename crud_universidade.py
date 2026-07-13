@@ -28,7 +28,7 @@ def obter_conexao():
 
 
 # CREATE
-def inserir_usuario(cpf, nome, login, senha, emails, data_nascimento=None):
+def inserir_usuario(cpf, nome, login, senha, emails, data_nascimento=None):  #data_nascimento é opcional, caso não seja fornecido, será inserido como NULL no banco
     sql = """
     INSERT INTO universidade.usuario (cpf, nome, login, senha, email, data_nascimento)
     VALUES (%s, %s, %s, %s, %s, %s);
@@ -55,7 +55,7 @@ def listar_usuarios():
         try:
             cursor = conn.cursor()
             cursor.execute(sql)
-            registros = cursor.fetchall()
+            registros = cursor.fetchall()  #cursor.fetchall() retorna uma lista de tuplas com todos os registros encontrados no SELECT
             
             print("\n--- Lista de Usuários no Banco ---")
             for linha in registros:
@@ -75,7 +75,7 @@ def atualizar_senha_usuario(cpf, nova_senha):
             cursor = conn.cursor()
             cursor.execute(sql, (nova_senha, cpf))
             conn.commit()
-            if cursor.rowcount > 0:
+            if cursor.rowcount > 0:  #cursor.rowcount retorna o número de linhas afetadas pela última operação executada, nesse caso, o UPDATE
                 print("[Sucesso] Senha atualizada com sucesso!")
             else:
                 print("[Aviso] Usuário não encontrado com esse CPF.")
@@ -174,7 +174,7 @@ def deletar_curso(id_curso):
             else:
                 print("[Aviso] Curso não encontrado.")
         except Error as e:
-            print(f"Erro ao deletar curso: {e}. Verifique se existem alunos vinculados a ele.")
+            print(f"Erro ao deletar curso: {e}. Verifique se existem alunos vinculados a ele.")  #tratamento de erro para caso o curso tenha vínculos com estudantes, não permitindo a exclusão
             conn.rollback()
         finally:
             cursor.close()
