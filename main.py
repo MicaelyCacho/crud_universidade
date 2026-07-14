@@ -18,18 +18,18 @@ if motor_escolhido == "2":
         inserir_estudante, listar_estudantes, atualizar_matricula_estudante, deletar_estudante,
         inserir_vinculo, atualizar_status_vinculo, deletar_vinculo, listar_estudantes_completos
     )
-elif motor_escolhido != "1":
+elif motor_escolhido == "1":
+    print("\n[INFO] Executando motor padrão PostgreSQL...")
+    # A importação do PostgreSQL agora só acontece se o usuário escolher explicitamente a opção 1
+    from crud_universidade import (
+        inserir_usuario, listar_usuarios, atualizar_senha_usuario, deletar_usuario,
+        inserir_curso, listar_cursos, atualizar_nome_curso, deletar_curso,
+        inserir_estudante, listar_estudantes, atualizar_matricula_estudante, deletar_estudante,
+        inserir_vinculo, atualizar_status_vinculo, deletar_vinculo, listar_estudantes_completos
+    )
+else:
     print("[Erro] Opção inválida. Encerrando o sistema.")
     sys.exit()
-else:
-    print("\n[INFO] Executando motor padrão PostgreSQL...")
-
-from crud_universidade import (
-    inserir_usuario, listar_usuarios, atualizar_senha_usuario, deletar_usuario,
-    inserir_curso, listar_cursos, atualizar_nome_curso, deletar_curso,
-    inserir_estudante, listar_estudantes, atualizar_matricula_estudante, deletar_estudante,
-    inserir_vinculo, atualizar_status_vinculo, deletar_vinculo, listar_estudantes_completos
-)
 
 def exibir_menu():
     while True:

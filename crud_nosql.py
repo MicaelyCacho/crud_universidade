@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson import ObjectId
 
 #CONFIGURAÇÃO DA CONEXÃO NO MONGODB
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://lari_db_user:larilari1212@cluster0.altpe5p.mongodb.net/?appName=Cluster0")
+MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://<usuario>:<senha>@cluster0.altpe5p.mongodb.net/?appName=Cluster0")
 client = MongoClient(MONGO_URI)
 db = client["universidade_db"]
 

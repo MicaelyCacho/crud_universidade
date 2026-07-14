@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from pymongo.errors import CollectionInvalid, OperationFailure
 
 #CONFIGURAÇÃO DA CONEXÃO
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://lari_db_user:larilari1212@cluster0.altpe5p.mongodb.net/?appName=Cluster0")
+MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://<usuario>:<senha>@cluster0.altpe5p.mongodb.net/?appName=Cluster0")
 DB_NAME = "universidade_db"
 
 def inicializar_banco_nosql():
